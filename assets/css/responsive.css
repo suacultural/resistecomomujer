@@ -1,0 +1,269 @@
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+/* ---- TABLET (768px - 1024px) ---- */
+@media (max-width: 1024px) {
+  .nav-menu {
+    gap: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+
+  .content-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ---- MÓVIL (hasta 767px) ---- */
+@media (max-width: 767px) {
+  :root {
+    --spacing-xl: 2rem;
+    --spacing-lg: 1.5rem;
+  }
+
+  /* NAVEGACIÓN MÓVIL */
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: fixed;
+    left: -100%;
+    top: 70px;
+    flex-direction: column;
+    background-color: var(--bg-light);
+    width: 100%;
+    text-align: left;
+    transition: left 0.3s;
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-md) 0;
+    gap: 0;
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .nav-item {
+    width: 100%;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 1rem var(--spacing-md);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .nav-link.active {
+    background-color: var(--bg-gray);
+    border-bottom-color: var(--primary);
+  }
+
+  /* Dropdown móvil */
+  .dropdown {
+    position: static;
+  }
+
+  .dropdown-menu {
+    position: static;
+    display: none;
+    box-shadow: none;
+    background-color: var(--bg-gray);
+    margin: 0;
+    border-radius: 0;
+    max-width: none;
+  }
+
+  .dropdown.active .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-menu a {
+    padding-left: 2rem;
+  }
+
+  .dropdown-toggle::after {
+    margin-left: auto;
+  }
+
+  .dropdown.active .dropdown-toggle::after {
+    transform: rotate(45deg);
+  }
+
+  /* HERO */
+  .hero {
+    padding: 3rem var(--spacing-md) 2rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* CONTENT */
+  .content-section {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  .content-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .content-section p {
+    font-size: 1rem;
+  }
+
+  .featured-content {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .card-image {
+    height: 200px;
+  }
+
+  .card-body h3 {
+    font-size: 1.25rem;
+  }
+
+  /* FOOTER */
+  .footer {
+    padding: var(--spacing-lg) var(--spacing-md) var(--spacing-md);
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .footer-section h4 {
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* ---- MÓVIL PEQUEÑO (hasta 480px) ---- */
+@media (max-width: 480px) {
+  .nav-container {
+    padding: 0.75rem var(--spacing-sm);
+  }
+
+  .nav-logo {
+    font-size: 1.25rem;
+  }
+
+  .hero {
+    padding: 2rem var(--spacing-sm) 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .btn {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  .content-section,
+  .featured-content {
+    padding: var(--spacing-lg) var(--spacing-sm);
+  }
+
+  .content-section h2 {
+    font-size: 1.25rem;
+  }
+
+  .content-section p {
+    font-size: 0.95rem;
+  }
+
+  .card-body {
+    padding: var(--spacing-sm);
+  }
+
+  .card-body h3 {
+    font-size: 1.1rem;
+  }
+
+  .card-body p {
+    font-size: 0.9rem;
+  }
+
+  .nav-link {
+    padding: 0.75rem var(--spacing-sm);
+  }
+
+  .dropdown-menu a {
+    padding: 0.75rem var(--spacing-sm) 0.75rem 2rem;
+  }
+}
+
+/* ---- PRINT ---- */
+@media print {
+  .navbar,
+  .footer {
+    display: none;
+  }
+
+  body {
+    color: black;
+    background-color: white;
+  }
+
+  .content-card {
+    page-break-inside: avoid;
+  }
+}
+
+/* ---- HIGH RESOLUTION DISPLAYS ---- */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ---- REDUCED MOTION ---- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
