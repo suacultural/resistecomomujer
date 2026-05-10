@@ -338,6 +338,7 @@ footer {
   margin-bottom: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  align-content: center;
 }
 
 .footer-button {
