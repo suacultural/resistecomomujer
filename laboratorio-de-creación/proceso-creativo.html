@@ -8,12 +8,15 @@
   <link rel="stylesheet" href="/resistecomomujer/assets/css/style.css">
 </head>
 <body>
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="sidebar-logo">
-      <img src="/resistecomomujer/assets/images/logo-grande.png" alt="Resiste Como Mujer">
+    <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <img src="/resistecomomujer/assets/images/logo-grande.png" alt="Resiste Como Mujer">
+      </div>
+      <div class="sidebar-title">Resiste como Mujer</div>
+      <button class="menu-close" id="menuClose">✕</button>
     </div>
-    <div class="sidebar-title">Resiste como Mujer</div>
     
     <nav>
       <ul class="sidebar-menu">
@@ -22,7 +25,7 @@
         <li>
           <button class="sidebar-toggle">▼</button>
           <a href="/resistecomomujer/historias-rcm.html">HISTORIAS</a>
-          <ul class="sidebar-submenu">
+          <ul class="sidebar-submenu active">
             <li><a href="/resistecomomujer/historias/intro.html">INTRO</a></li>
             <li><a href="/resistecomomujer/historias/alexa-y-sofia.html">ALEXA Y SOFÍA</a></li>
             <li><a href="/resistecomomujer/historias/ángela.html">ÁNGELA</a></li>
@@ -35,9 +38,9 @@
         <li>
           <button class="sidebar-toggle">▼</button>
           <a href="/resistecomomujer/laboratorio-de-creación/">Laboratorio de Creación</a>
-          <ul class="sidebar-submenu active">
+          <ul class="sidebar-submenu">
             <li><a href="/resistecomomujer/laboratorio-de-creación/convocatoria.html">Convocatoria</a></li>
-            <li><a href="/resistecomomujer/laboratorio-de-creación/proceso-creativo.html" class="active">Proceso Creativo</a></li>
+            <li><a href="/resistecomomujer/laboratorio-de-creación/proceso-creativo.html">Proceso Creativo</a></li>
             <li><a href="/resistecomomujer/laboratorio-de-creación/videos-de-convocatoria.html">Videos</a></li>
             <li><a href="/resistecomomujer/laboratorio-de-creación/estreno.html">Estreno</a></li>
           </ul>
@@ -48,6 +51,17 @@
       </ul>
     </nav>
   </aside>
+
+  <!-- HAMBURGER MENU BUTTON -->
+  <button class="hamburger-menu" id="menuToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- OVERLAY PARA CERRAR MENÚ -->
+  <div class="menu-overlay" id="menuOverlay"></div>
+
 
   <!-- MAIN CONTENT -->
   <main class="main-content">
