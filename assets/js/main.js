@@ -1,48 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Menú hamburguesa
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const sidebarMenu = document.querySelector('.sidebar-menu');
-  
-  if (hamburgerBtn && sidebarMenu) {
-    hamburgerBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      sidebarMenu.classList.toggle('active');
-      this.classList.toggle('active');
-    });
-
-    // Cerrar menú al hacer click en un enlace
-    const menuLinks = sidebarMenu.querySelectorAll('a');
-    menuLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        // No cerrar si es un toggle
-        if (!this.classList.contains('sidebar-toggle')) {
-          sidebarMenu.classList.remove('active');
-          hamburgerBtn.classList.remove('active');
-        }
-      });
-    });
-
-    // Cerrar menú al clickear fuera
-    document.addEventListener('click', function(e) {
-      if (!e.target.closest('.sidebar') && sidebarMenu.classList.contains('active')) {
-        sidebarMenu.classList.remove('active');
-        hamburgerBtn.classList.remove('active');
-      }
-    });
-  }
-
   // Toggle menú submenu
   const toggleButtons = document.querySelectorAll('.sidebar-toggle');
   
   toggleButtons.forEach(button => {
     button.addEventListener('click', function(e) {
       e.preventDefault();
-      const parent = this.closest('li');
-      const submenu = parent.querySelector('.sidebar-submenu');
-      
-      if (submenu) {
+      const submenu = this.nextElementSibling;
+      if (submenu && submenu.classList.contains('sidebar-submenu')) {
         submenu.classList.toggle('active');
-        this.classList.toggle('active');
       }
     });
   });
@@ -60,10 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
       const submenu = link.closest('.sidebar-submenu');
       if (submenu) {
         submenu.classList.add('active');
-        const toggle = submenu.previousElementSibling;
-        if (toggle && toggle.classList.contains('sidebar-toggle')) {
-          toggle.classList.add('active');
-        }
       }
     }
   });
