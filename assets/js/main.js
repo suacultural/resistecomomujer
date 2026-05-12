@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentPath = window.location.pathname;
     let sidebarPath = './assets/html/sidebar.html';
     
-    // Si estamos en una subcarpeta (historias/ o laboratorio-de-creación/)
+    // Si estamos en una subcarpeta (historias/ o laboratorio-de-creacion/)
     if (currentPath.includes('/historias/') || currentPath.includes('/laboratorio-de-creaci')) {
       sidebarPath = '../assets/html/sidebar.html';
     }
