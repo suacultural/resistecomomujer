@@ -291,6 +291,13 @@ body {
   line-height: 1.8;
 }
 
+
+.history-title-black {
+  color: black;
+  text-align: center;
+  font-size: 2rem;
+}
+
 /* CONTENT SECTION */
 .text-content {
   max-width: 900px;
