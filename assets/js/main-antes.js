@@ -2,16 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Cargar sidebar dinámicamente
   const sidebarContainer = document.getElementById('sidebar-container');
   if (sidebarContainer) {
-    // Determinar la ruta relativa según la ubicación del archivo actual
-    const currentPath = window.location.pathname;
-    let sidebarPath = './assets/html/sidebar.html';
-    
-    // Si estamos en una subcarpeta (historias/ o laboratorio-de-creación/)
-    if (currentPath.includes('/historias/') || currentPath.includes('/laboratorio-de-creaci')) {
-      sidebarPath = '../assets/html/sidebar.html';
-    }
-    
-    fetch(sidebarPath)
+    fetch('/resistecomomujer/assets/html/sidebar.html')
       .then(response => response.text())
       .then(html => {
         sidebarContainer.innerHTML = html;
@@ -23,30 +14,12 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function initializeSidebar() {
-    // Hamburger menu toggle (DESKTOP)
+    // Hamburger menu toggle
     const menuToggle = document.getElementById('menuToggle');
     const sidebar = document.getElementById('sidebar');
     const menuOverlay = document.getElementById('menuOverlay');
     const menuClose = document.getElementById('menuClose');
 
-    // Mobile header toggle (MÓVIL)
-    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-
-    const openMenu = function() {
-      if (sidebar) sidebar.classList.add('active');
-      if (menuToggle) menuToggle.classList.add('active');
-      if (mobileMenuToggle) mobileMenuToggle.classList.add('active');
-      if (menuOverlay) menuOverlay.classList.add('active');
-    };
-
-    const closeMenu = function() {
-      if (sidebar) sidebar.classList.remove('active');
-      if (menuToggle) menuToggle.classList.remove('active');
-      if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
-      if (menuOverlay) menuOverlay.classList.remove('active');
-    };
-
-    // Desktop hamburger
     if (menuToggle) {
       menuToggle.addEventListener('click', function() {
         sidebar.classList.toggle('active');
@@ -55,17 +28,20 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
 
-    // Mobile header toggle
-    if (mobileMenuToggle) {
-      mobileMenuToggle.addEventListener('click', openMenu);
-    }
-
     if (menuClose) {
-      menuClose.addEventListener('click', closeMenu);
+      menuClose.addEventListener('click', function() {
+        sidebar.classList.remove('active');
+        if (menuToggle) menuToggle.classList.remove('active');
+        if (menuOverlay) menuOverlay.classList.remove('active');
+      });
     }
 
     if (menuOverlay) {
-      menuOverlay.addEventListener('click', closeMenu);
+      menuOverlay.addEventListener('click', function() {
+        sidebar.classList.remove('active');
+        if (menuToggle) menuToggle.classList.remove('active');
+        menuOverlay.classList.remove('active');
+      });
     }
 
     // Toggle solo para desplegables (HISTORIAS y Laboratorio)
