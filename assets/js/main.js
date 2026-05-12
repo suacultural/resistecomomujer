@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Cargar sidebar dinámicamente
   const sidebarContainer = document.getElementById('sidebar-container');
   if (sidebarContainer) {
-    fetch('/resistecomomujer/assets/html/sidebar.html')
+    fetch('./assets/html/sidebar.html')
       .then(response => response.text())
       .then(html => {
         sidebarContainer.innerHTML = html;
