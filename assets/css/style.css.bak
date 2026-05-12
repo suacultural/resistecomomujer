@@ -171,8 +171,12 @@ body {
 }
 
 .hero-text {
-  flex: 1;
   color: white;
+}
+
+.hero-text2 {
+  flex: 1;
+  color: black;
 }
 
 .hero h1 {
