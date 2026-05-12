@@ -112,6 +112,16 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
 
+  // Cargar footer dinámicamente
+const footerContainer = document.getElementById('footer-container');
+if (footerContainer) {
+  fetch('/resistecomomujer/assets/html/footer.html')
+    .then(response => response.text())
+    .then(html => {
+      footerContainer.innerHTML = html;
+    })
+    .catch(err => console.error('Error loading footer:', err));
+}  
   // Marcar enlace activo
   const currentPath = window.location.pathname;
   const navLinks = document.querySelectorAll('.sidebar-menu a');
