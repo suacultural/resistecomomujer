@@ -1,90 +1,92 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Hamburger menu toggle
-  const menuToggle = document.getElementById('menuToggle');
-  const sidebar = document.getElementById('sidebar');
-  const menuOverlay = document.getElementById('menuOverlay');
-  const menuClose = document.getElementById('menuClose');
-
-  if (menuToggle) {
-    menuToggle.addEventListener('click', function() {
-      sidebar.classList.toggle('active');
-      menuToggle.classList.toggle('active');
-      menuOverlay.classList.toggle('active');
-    });
+  // Cargar sidebar dinámicamente
+  const sidebarContainer = document.getElementById('sidebar-container');
+  if (sidebarContainer) {
+    fetch('/resistecomomujer/assets/html/sidebar.html')
+      .then(response => response.text())
+      .then(html => {
+        sidebarContainer.innerHTML = html;
+        initializeSidebar();
+      })
+      .catch(err => console.error('Error loading sidebar:', err));
+  } else {
+    initializeSidebar();
   }
 
-  if (menuClose) {
-    menuClose.addEventListener('click', function() {
-      sidebar.classList.remove('active');
-      menuToggle.classList.remove('active');
-      menuOverlay.classList.remove('active');
-    });
-  }
+  function initializeSidebar() {
+    // Hamburger menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const menuClose = document.getElementById('menuClose');
 
-  if (menuOverlay) {
-    menuOverlay.addEventListener('click', function() {
-      sidebar.classList.remove('active');
-      menuToggle.classList.remove('active');
-      menuOverlay.classList.remove('active');
-    });
-  }
-
-  // Toggle menú submenu mejorado para móvil
-  const toggleButtons = document.querySelectorAll('.sidebar-toggle');
-  
-  toggleButtons.forEach(button => {
-    button.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      const parentLi = this.closest('li');
-      const submenu = parentLi.querySelector('.sidebar-submenu');
-      if (submenu) {
-        submenu.classList.toggle('active');
-        // Rotar el botón
-        this.classList.toggle('active');
-      }
-    });
-  });
-
-  // Mejorar clic en HISTORIAS y Laboratorio en móvil
-  const menuItems = document.querySelectorAll('.sidebar-menu li');
-  
-  menuItems.forEach(item => {
-    const hasSubmenu = item.querySelector('.sidebar-submenu');
-    if (hasSubmenu) {
-      const link = item.querySelector('a:not(.sidebar-toggle)');
-      if (link) {
-        link.addEventListener('click', function(e) {
-          const isMobile = window.innerWidth <= 768;
-          const submenu = item.querySelector('.sidebar-submenu');
-          const isOpen = submenu.classList.contains('active');
-          
-          if (isMobile) {
-            // Si está cerrado, abrirlo
-            if (!isOpen) {
-              e.preventDefault();
-              submenu.classList.add('active');
-              const btn = item.querySelector('.sidebar-toggle');
-              if (btn) btn.classList.add('active');
-            }
-            // Si está abierto, permitir navegación normalmente
-          }
-        });
-      }
+    if (menuToggle) {
+      menuToggle.addEventListener('click', function() {
+        sidebar.classList.toggle('active');
+        menuToggle.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
+      });
     }
-  });
 
-  // Cerrar menú al hacer clic en un enlace de submenu
-  const submenuLinks = document.querySelectorAll('.sidebar-submenu a');
-  submenuLinks.forEach(link => {
-    link.addEventListener('click', function() {
-      if (window.innerWidth <= 768) {
+    if (menuClose) {
+      menuClose.addEventListener('click', function() {
         sidebar.classList.remove('active');
-        menuToggle.classList.remove('active');
+        if (menuToggle) menuToggle.classList.remove('active');
+        if (menuOverlay) menuOverlay.classList.remove('active');
+      });
+    }
+
+    if (menuOverlay) {
+      menuOverlay.addEventListener('click', function() {
+        sidebar.classList.remove('active');
+        if (menuToggle) menuToggle.classList.remove('active');
         menuOverlay.classList.remove('active');
-      }
+      });
+    }
+
+    // Toggle solo para desplegables (HISTORIAS y Laboratorio)
+    const toggleButtons = document.querySelectorAll('.sidebar-toggle');
+    
+    toggleButtons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const parentLi = this.closest('li');
+        const submenu = parentLi.querySelector('.sidebar-submenu');
+        if (submenu) {
+          submenu.classList.toggle('active');
+          this.classList.toggle('active');
+        }
+      });
     });
-  });
+
+    // Click en HISTORIAS y Laboratorio solo despliegua
+    const mainLinks = document.querySelectorAll('.sidebar-main-link');
+    mainLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const parentLi = this.closest('li');
+        const submenu = parentLi.querySelector('.sidebar-submenu');
+        const btn = parentLi.querySelector('.sidebar-toggle');
+        
+        if (submenu) {
+          submenu.classList.toggle('active');
+          if (btn) btn.classList.toggle('active');
+        }
+      });
+    });
+
+    // Cerrar menú al hacer clic en un enlace de submenu
+    const submenuLinks = document.querySelectorAll('.sidebar-submenu a');
+    submenuLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        if (window.innerWidth <= 768 && sidebar) {
+          sidebar.classList.remove('active');
+          if (menuToggle) menuToggle.classList.remove('active');
+          if (menuOverlay) menuOverlay.classList.remove('active');
+        }
+      });
+    });
 
   // Marcar enlace activo
   const currentPath = window.location.pathname;
