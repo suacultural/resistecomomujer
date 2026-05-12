@@ -197,9 +197,10 @@ body {
   color: white;
 }
 
-.hero-text2 {
-  flex: 1;
+.hero-text .history-title-black {
   color: black;
+  text-align: center;
+  font-size: 2rem;
 }
 
 .hero h1 {
