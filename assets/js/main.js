@@ -57,7 +57,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Mobile header toggle
     if (mobileMenuToggle) {
-      mobileMenuToggle.addEventListener('click', openMenu);
+      mobileMenuToggle.addEventListener('click', function() {
+        const isOpen = sidebar.classList.contains('active');
+        if (isOpen) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
     }
 
     if (menuClose) {
