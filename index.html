@@ -1,62 +1,39 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Resiste Como Mujer - Historias de resistencia, creatividad y transformación">
-  <title>Resiste Como Mujer - Inicio</title>
-  <link rel="stylesheet" href="/resistecomomujer/assets/css/style.css">
-  <link rel="icon" type="image/png" href="/resistecomomujer/assets/favicon.ico">
-  <meta property="og:title" content="Resiste Como Mujer">
-  <meta property="og:description" content="Cortometraje móvil creado por mujeres de El Socorro, Santander producido por Sua Corporación Cultural">
-  <meta property="og:image" content="https://suacultural.github.io/resistecomomujer/assets/images/circulo-og.jpg">
-  <meta property="og:url" content="https://suacultural.github.io/resistecomomujer">
-</head>
-<body>
-  <!-- SIDEBAR CONTAINER -->
-  <div id="sidebar-container"></div>
+---
+layout: default
+title: Inicio
+description: Mira la película completa
+---
 
-  <!-- MAIN CONTENT -->
-  <main class="main-content">
-    <div class="content">
+
       <!-- CORTOMETRAJE -->
       <section class="hero">
         <div class="hero-image">
-          <img src="/resistecomomujer/assets/images/circulo.jpg" alt="Cortometraje completo">
+          <img src="{{ site.baseurl }}/assets/images/circulo.jpg" alt="Cortometraje completo">
         </div>
         <div class="hero-text">
           <h1>Cortometraje</h1>
-          <a href="/resistecomomujer/cortometraje.html" class="hero-button">Mira la película completa</a>
+          <a href="{{ site.baseurl }}/cortometraje.html" class="hero-button">Mira la película completa</a>
         </div>
       </section>
 
       <!-- HISTORIAS -->
       <section class="history-item white">
         <div class="hero-image">
-          <img src="/resistecomomujer/assets/images/todas-cel.jpg" alt="Historias">
+          <img src="{{ site.baseurl }}/assets/images/todas-cel.jpg" alt="Historias">
         </div>
         <div class="hero-text">
           <h1 style="color: black;">Historias</h1>
-          <a href="/resistecomomujer/historias-rcm.html" class="hero-button">Elige el fragmento que quieras ver</a>
+          <a href="{{ site.baseurl }}/historias-rcm.html" class="hero-button">Elige el fragmento que quieras ver</a>
         </div>
       </section>
 
       <!-- LABORATORIO -->
       <section class="hero">
         <div class="hero-image">
-          <img src="/resistecomomujer/assets/images/todas-blanco.jpg" alt="Laboratorio de Creación">
+          <img src="{{ site.baseurl }}/assets/images/todas-blanco.jpg" alt="Laboratorio de Creación">
         </div>
         <div class="hero-text">
           <h1>Laboratorio de Creación</h1>
-          <a href="/resistecomomujer/laboratorio-de-creacion/proceso-creativo.html" class="hero-button">Conoce el proceso colectivo</a>
+          <a href="{{ site.baseurl }}/laboratorio-de-creacion/proceso-creativo.html" class="hero-button">Conoce el proceso colectivo</a>
         </div>
       </section>
-    </div>
-
-    <!-- FOOTER -->
-    <div id="footer-container"></div>
-  </main>
-
-  <script src="/resistecomomujer/assets/js/main.js"></script>
-</body>
-</html>

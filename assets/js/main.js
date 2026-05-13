@@ -1,26 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
   // Cargar sidebar dinámicamente
-  const sidebarContainer = document.getElementById('sidebar-container');
-  if (sidebarContainer) {
-    // Determinar la ruta relativa según la ubicación del archivo actual
-    const currentPath = window.location.pathname;
-    let sidebarPath = './assets/html/sidebar.html';
-    
-    // Si estamos en una subcarpeta (historias/ o laboratorio-de-creacion/)
-    if (currentPath.includes('/historias/') || currentPath.includes('/laboratorio-de-creaci')) {
-      sidebarPath = '../assets/html/sidebar.html';
-    }
-    
-    fetch(sidebarPath)
-      .then(response => response.text())
-      .then(html => {
-        sidebarContainer.innerHTML = html;
-        initializeSidebar();
-      })
-      .catch(err => console.error('Error loading sidebar:', err));
-  } else {
-    initializeSidebar();
-  }
+const sidebarContainer = document.getElementById('sidebar-container');
+if (sidebarContainer) {
+  fetch(baseUrl + '/assets/html/sidebar.html')
+    .then(response => response.text())
+    .then(html => {
+      sidebarContainer.innerHTML = html;
+      initializeSidebar();
+    })
+    .catch(err => console.error('Error loading sidebar:', err));
+} else {
+  initializeSidebar();
+}
 
   function initializeSidebar() {
     // Hamburger menu toggle (DESKTOP)
@@ -122,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Cargar footer dinámicamente
 const footerContainer = document.getElementById('footer-container');
 if (footerContainer) {
-  fetch('/resistecomomujer/assets/html/footer.html')
+  fetch(baseUrl + '/assets/html/footer.html')
     .then(response => response.text())
     .then(html => {
       footerContainer.innerHTML = html;
